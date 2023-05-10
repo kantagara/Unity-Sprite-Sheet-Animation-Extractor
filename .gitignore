@@ -1,0 +1,12 @@
+*
+
+!Assets/
+!Packages/
+!ProjectSettings/
+!.gitignore
+!*/**/*
+
+**/*.swatch
+**/.DS_Store
+Art/
+Art.meta

@@ -14,3 +14,7 @@ Original Sprite Sheet Export Settings is meant for dragging the original sprite 
 Override Sprite Sheet Export Settings array is meant for dragging and dropping all the sprite sheets that will re-use the same state machine as the original, but animations will be different. That's why as the end result it will produce **Animator Override Controller**.
 
 Last but not least is the common animation data for which you can define the actual states for the state machine and their names. Column Offset represents the actual column the animations you want to extract are on. You also need to provide the lenght of the animation.
+
+Art credits: https://shubibubi.itch.io/cozy-people
+
+Full-blown-tutorial: https://youtu.be/gEptNmIcnyg
