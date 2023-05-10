@@ -1,6 +1,10 @@
 # Unity-Sprite-Sheet-Animation-Extractor
 Small Editor Window that automatically creates animations, animator controller and animator override controllers for the 2d sprite sheets.
 
+**Note: It only works with grid-based sprite sheets like these**
+![image](https://github.com/kantagara/Unity-Sprite-Sheet-Animation-Extractor/assets/8202013/32183bed-b93d-4990-bcbd-705cee0be14a)
+
+This is how the editor looks like:
 
 ![image](https://github.com/kantagara/Unity-Sprite-Sheet-Animation-Extractor/assets/8202013/2b7b080d-314f-426f-81fe-5c6846f973be)
 
