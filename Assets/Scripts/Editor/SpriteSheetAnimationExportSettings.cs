@@ -17,9 +17,11 @@ namespace UnityLab
         [field: SerializeField] public string AnimationPrefix { get;  set; }
         //Spritesheet that we get that gets split into individual sprite
         [field: SerializeField] public Texture2D SpriteSheet { get;  set; }
-        
-        //This is necessary only for Unity Editor, thus the preprocessor directive
-        [field:SerializeField] public bool IsFolded { get; set; }
-        
+
+
+        public bool ValidateConfiguration()
+        {
+            return false;
+        }
     }
 }
