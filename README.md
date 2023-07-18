@@ -4,7 +4,7 @@ Small Editor Window that automatically creates animations, animator controller a
 **Note: It only works with grid-based sprite sheets like these**
 ![image](https://github.com/kantagara/Unity-Sprite-Sheet-Animation-Extractor/assets/8202013/32183bed-b93d-4990-bcbd-705cee0be14a)
 
-![Demo][./Animation.gif]
+![Demo](/Animation.gif)
 
 First two parameters represent the height and width of the sprite sheet.
 
