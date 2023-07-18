@@ -5,6 +5,7 @@
 !ProjectSettings/
 !.gitignore
 !*/**/*
+!Animation.gif
 
 **/*.swatch
 **/.DS_Store
