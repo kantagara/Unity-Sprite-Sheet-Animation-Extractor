@@ -6,16 +6,16 @@ Small Editor Window that automatically creates animations, animator controller a
 
 ![Demo](/Animation.gif)
 
-First two parameters represent the height and width of the sprite sheet.
+First two parameters represent the height and width of the sprite sheet (width also represents number of sprites that will go into the animation)
 
 **Note**: You can have multiple sprite sheets inside of a single .png file but their width and height must match.
 Third one is the frame rate i.e. how many animations you want per second.
 
+Common animation data is the foundation of this editor window. It defines the actual states for the state machine and their names. Column Offset represents the actual column the animations you want to extract are on.
+
 Original Sprite Sheet Export Settings is meant for dragging the original sprite sheets .png file for which the editor window can create animations and **Animator Controller**.
 
 Override Sprite Sheet Export Settings array is meant for dragging and dropping all the sprite sheets that will re-use the same state machine as the original, but animations will be different. That's why as the end result it will produce **Animator Override Controller**.
-
-Last but not least is the common animation data for which you can define the actual states for the state machine and their names. Column Offset represents the actual column the animations you want to extract are on. You also need to provide the lenght of the animation.
 
 Art credits: https://shubibubi.itch.io/cozy-people
 
