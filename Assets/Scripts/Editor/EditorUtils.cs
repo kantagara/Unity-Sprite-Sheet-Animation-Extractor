@@ -32,5 +32,16 @@ namespace UnityLab
         {
             return $"{AssetDatabase.GetAssetPath(settings.ExportFolder)}/{settings.AnimationPrefix}_{index}.controller";
         }
+        
+        public static Rect With(this Rect rect, float? newWidth=null,float? newHeight=null, float? x= null, float?y=null)
+        {
+            var newRect = new Rect(rect);
+            newRect.width = newWidth ?? newRect.width;
+            newRect.height = newHeight ?? newRect.height;
+            newRect.x = x ?? newRect.x;
+            newRect.y = y ?? newRect.y;
+
+            return newRect;
+        }
     }
 }

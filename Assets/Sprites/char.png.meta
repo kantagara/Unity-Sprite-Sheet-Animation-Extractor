@@ -21,7 +21,7 @@ TextureImporter:
     heightScale: 0.25
     normalMapFilter: 0
     flipGreenChannel: 0
-  isReadable: 0
+  isReadable: 1
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
@@ -8510,7 +8510,6 @@ TextureImporter:
       char_351: -345615085
       char_188: 176623858
       char_299: 1216129658
-      char_314: -690363200
       char_67: 731483058
       char_342: 1261529413
       char_338: 1974343525
@@ -8519,16 +8518,17 @@ TextureImporter:
       char_226: 238980802
       char_277: -748803855
       char_355: -2010717106
+      char_314: -690363200
       char_129: -1030152708
       char_315: 648857985
       char_348: 1386504107
-      char_262: -141241895
       char_260: -1012991198
       char_236: -2001960916
       char_147: -1569848899
       char_354: -1066330309
       char_234: 625022737
       char_327: -2134785995
+      char_262: -141241895
       char_10: 1400504663
       char_114: -654286147
       char_119: -1717920618
