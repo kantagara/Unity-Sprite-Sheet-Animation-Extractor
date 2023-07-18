@@ -8,6 +8,8 @@ namespace UnityLab
 {
     public class AnimationCreatorWindow : EditorWindow
     {
+        #region Class Fields And Properties
+        
         private static readonly GUIContent MainAnimationGuiContent =
             new("Main Animations", "Settings for Original Animation. " +
                                    "This will end up creating all the clips and animator controller for the given sprite sheet.");
@@ -43,7 +45,10 @@ namespace UnityLab
 
         private string OriginalAnimatonExportFolderPath =>
             AssetDatabase.GetAssetPath(mainAnimation.ExportFolder);
-
+        #endregion
+        
+        #region Untiy Callbacks
+        
         private void OnEnable()
         {
             if (serializedObject == null)
@@ -67,20 +72,9 @@ namespace UnityLab
             EditorGUILayout.EndScrollView();
             serializedObject.ApplyModifiedProperties();
         }
+        #endregion
 
-        private void CreateAnimationsAndAnimatorOverrideController()
-        {
-            for (var i = 0; i < additionalAnimations.Length; i++)
-            {
-                var settings = additionalAnimations[i];
-                EditorUtility.DisplayProgressBar("Creating Animations",
-                    $"Creating Animations for {settings.SpriteSheet.name}",
-                    (float)i / additionalAnimations.Length);
-                CreateAnimationsAndAnimatorController(settings, true);
-            }
-
-            EditorUtility.ClearProgressBar();
-        }
+        #region Window creation and field display
 
         private void DisplayFields()
         {
@@ -106,9 +100,13 @@ namespace UnityLab
             GetWindow<AnimationCreatorWindow>("Animation Creator");
         }
 
+        #endregion
+        
+        #region Animation Creation
+        
         private void CreateAnimationsAndAnimatorController(SpriteSheetAnimationExportSettings settings, bool isOverride)
         {
-            var spritesInMatrix = GetAllSpritesFromTexture(settings.SpriteSheet)
+            var spritesInMatrix = settings.SpriteSheet.GetAllSpritesFromTexture()
                 .Convert1DArrayInto2DArray(spriteSheetWidth, spriteSheetHeight);
 
             //Iterate trough list of all the sprites in the matrix (i.e. for clothing, spritesInMatrix will have list of
@@ -131,23 +129,29 @@ namespace UnityLab
             }
         }
 
-        private static Sprite[] GetAllSpritesFromTexture(Texture2D texture)
+        private void CreateAnimationsAndAnimatorOverrideController()
         {
-            var spriteSheetPath = AssetDatabase.GetAssetPath(texture);
-            //LoadAllAssetsAtPath retrieves all the sprites from the texture who's path we've provided
-            return AssetDatabase.LoadAllAssetsAtPath(spriteSheetPath).OfType<Sprite>()
-                .OrderBy(x => x.name, new ExtractedSpriteNumberComparer()).ToArray();
-        }
+            for (var i = 0; i < additionalAnimations.Length; i++)
+            {
+                var settings = additionalAnimations[i];
+                EditorUtility.DisplayProgressBar("Creating Animations",
+                    $"Creating Animations for {settings.SpriteSheet.name}",
+                    (float)i / additionalAnimations.Length);
+                CreateAnimationsAndAnimatorController(settings, true);
+            }
 
+            EditorUtility.ClearProgressBar();
+        }
+       
         /// <summary>
-        ///     Creating either the original animation controller or the override animation controller
+        /// Creating either the original animation controller or the override animation controller
         /// </summary>
         /// <param name="settings">Settings</param>
         /// <param name="index">Current index in the list of matrices</param>
         /// <param name="isOverride">Should we create original animator or an override controller</param>
         private void CreateAnimator(SpriteSheetAnimationExportSettings settings, int index, bool isOverride)
         {
-            var animatorSaveLocation = GetAnimatorSavePath(settings, index);
+            var animatorSaveLocation = settings.GetAnimatorSavePath(index);
             //We know that this array will never be empty because we always first create animation clips and later on 
             //we create the animator
             var originalAnimationClips = EditorUtils.LoadAllAssetsOfTypeFromFolder<AnimationClip>(
@@ -240,11 +244,10 @@ namespace UnityLab
             AssetDatabase.SaveAssets();
             AssetDatabase.Refresh();
         }
+        
+        #endregion
 
 
-        private static string GetAnimatorSavePath(SpriteSheetAnimationExportSettings settings, int index)
-        {
-            return $"{AssetDatabase.GetAssetPath(settings.ExportFolder)}/{settings.AnimationPrefix}_{index}.controller";
-        }
+      
     }
 }
