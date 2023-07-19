@@ -13,9 +13,9 @@ Third one is the frame rate i.e. how many animations you want per second.
 
 Common animation data is the foundation of this editor window. It defines the actual states for the state machine and their names. Column Offset represents the actual column the animations you want to extract are on.
 
-Original Sprite Sheet Export Settings is meant for dragging the original sprite sheets .png file for which the editor window can create animations and **Animator Controller**.
+Main Animations is meant for dragging the original sprite sheets .png file for which the editor window can create animations and **Animator Controller**.
 
-Override Sprite Sheet Export Settings array is meant for dragging and dropping all the sprite sheets that will re-use the same state machine as the original, but animations will be different. That's why as the end result it will produce **Animator Override Controller**.
+Additional Animations array is meant for dragging and dropping all the sprite sheets that will re-use the same state machine as the original, but animations will be different. That's why as the end result it will produce **Animator Override Controller**.
 
 Art credits: https://shubibubi.itch.io/cozy-people
 
