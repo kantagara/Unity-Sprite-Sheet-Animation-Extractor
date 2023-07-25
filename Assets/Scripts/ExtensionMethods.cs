@@ -10,29 +10,25 @@ namespace UnityLab
         ///     So given the array of elements, width of 4 and a height of 2, for the array above this function converts it into
         ///     [[[1,2,3,4],[9,10,11,12]], [[5,6,7,8], [13,14,15,16]]]
         /// </summary>
-        public static List<T[,]> Convert1DArrayInto2DArray<T>(this T[] array, int width, int height)
+        public static List<T[,]> Convert1DArrayInto3DArray<T>(this T[] array, int width, int height)
         {
-            var numberOfElements = array.Length;
             var totalNumberOfElementsPer2DArray = width * height;
-            var numberOf2DArrays = (numberOfElements + totalNumberOfElementsPer2DArray - 1) /
-                                   totalNumberOfElementsPer2DArray;
-
+            var numberOf2DArrays = (array.Length + totalNumberOfElementsPer2DArray - 1) / totalNumberOfElementsPer2DArray;
             var listOf2DArrays = new List<T[,]>(numberOf2DArrays);
 
-            for (var currentArrayNumber = 0; currentArrayNumber < numberOf2DArrays; currentArrayNumber++)
+            for (int i = 0; i < array.Length; i++)
             {
-                var rowOffset = 0;
-                var currentArray = new T[height, width];
+                // Calculates the current 2D array, row, and column
+                var currentArrayNumber = i / totalNumberOfElementsPer2DArray;
+                var row = (i / width) % height;
+                var col = i % width;
 
-                for (var i = 0; i < height; i++)
-                {
-                    for (var j = 0; j < width; j++)
-                        currentArray[i, j] = array[i + currentArrayNumber * width + rowOffset + j];
+                // Creates a new 2D array if the current array is full
+                if (i % totalNumberOfElementsPer2DArray == 0)
+                    listOf2DArrays.Add(new T[height, width]);
 
-                    rowOffset += numberOf2DArrays * width - 1;
-                }
-
-                listOf2DArrays.Add(currentArray);
+                // Assigns the current element to the calculated position
+                listOf2DArrays[currentArrayNumber][row, col] = array[i];
             }
 
             return listOf2DArrays;

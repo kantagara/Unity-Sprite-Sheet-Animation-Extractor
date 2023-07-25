@@ -16,7 +16,7 @@ namespace UnityLab
         /// <summary>
         /// What is the position of the animation in the sprite sheet
         /// </summary>
-        [field: SerializeField] public int ColumnOffset { get; private set; }
+        [field: SerializeField] public int RowOffset { get; private set; }
        
     }
 }
